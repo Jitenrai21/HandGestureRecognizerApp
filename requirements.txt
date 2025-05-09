@@ -1,5 +1,5 @@
 opencv-python
-mediapipe
-pyautogui 
-pycaw 
-comtypes
+mediapipe #Google’s machine learning framework for real-time hand tracking and landmark detection
+pyautogui #Enables programmatic control of mouse and keyboard inputs, used for system-level actions
+pycaw #Python Core Audio Windows Library for controlling system audio volume.
+comtypes #Provides COM (Component Object Model) support for Python, required by pycaw for Windows audio control

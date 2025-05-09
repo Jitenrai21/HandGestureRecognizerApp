@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import logging
 from datetime import datetime
+import json
 
 # Suppress MediaPipe warnings
 logging.getLogger('mediapipe').setLevel(logging.ERROR)
@@ -10,14 +11,13 @@ from utils.hand_utils import HandDetector
 from utils.system_actions import volume_up, volume_down, open_browser, mute, greet, screenshot, display_volume_feedback
 from gestures.gesture_definitions import detect_gesture
 
-# Gesture-to-action mapping from provided JSON
+# Load gesture-to-action mapping from gesture_config.json
+with open('config/gesture_config.json', 'r') as f:
+    gesture_config = json.load(f)
+
+# Map gesture names to action functions
 GESTURE_ACTIONS = {
-    "thumbs_up": volume_up,
-    "thumbs_down": volume_down,
-    "peace_sign": open_browser,
-    "fist": mute,
-    "open_palm": greet,
-    "rock_sign": screenshot
+    gesture: globals()[action] for gesture, action in gesture_config.items()
 }
 
 def main():
@@ -116,7 +116,7 @@ def main():
 
             # Display frame if valid
             if frame is not None and isinstance(frame, np.ndarray):
-                cv2.imshow("Gesture Recognition Test", frame)
+                cv2.imshow("Gesture Recognition Appliaction", frame)
             else:
                 print("Error: Invalid frame for display")
 
