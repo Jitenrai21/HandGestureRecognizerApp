@@ -207,8 +207,3 @@ Built by **[Jitenrai21](https://github.com/Jitenrai21)**
 **Happy gesturing! 🎉**
 
 ```
-
----
-
-Would you like a version of this file saved and exported as `.md` or `.pdf`?
-```
